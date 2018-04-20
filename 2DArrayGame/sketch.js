@@ -2,78 +2,46 @@
 // Xyre Abelanes
 // April 16, 2018
 
-let rows = 27;
-let cols = 33;
+let rows = 14;
+let cols = 32;
 let grid;
 let cellSize;
 let moveX;
 let moveY;
 let gridMode;
-let loadOneMaze;
-let loadTwoMaze;
-let loadThreeMaze;
-let lines;
-let lines2;
-let lines3;
-let mazeGrid;
-let mazeGrid2;
-let mazeGrid3;
-let cheatMode = false;
-
-// The maps of Mazes
-function preload() {
-  loadOneMaze = "assets/mazes/1stMaze.txt";
-  loadTwoMaze = "assets/mazes/2ndMaze.txt";
-  loadThreeMaze = "assets/mazes/3rdMaze.txt";
-  lines = loadStrings(loadOneMaze);
-  lines2 = loadStrings(loadTwoMaze);
-  lines3 = loadStrings(loadThreeMaze);
-}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  cellSize = width / (cols * 1.8);
-  mazeGrid = createEmpty2dArray(cols, rows);
-  mazeGrid2 = createEmpty2dArray(cols, rows);
-  mazeGrid3 = createEmpty2dArray(cols, rows);
+  cellSize = width / cols;
+  grid = createEmpty2dArray(cols, rows);
   moveX = 0;
-  moveY = 5;
+  moveY = 0;
   gridMode = 1;
 
-  // preparing the mazes
-  for (let x = 0; x < cols; x++) {
-    for (let y = 0; y < rows; y++) {
-      let tileType = lines[x][y];
-      mazeGrid[x][y] = tileType;
-    }
-  }
-  for (let x = 0; x < cols; x++) {
-    for (let y = 0; y < rows; y++) {
-      let tileType = lines2[x][y];
-      mazeGrid2[x][y] = tileType;
-    }
-  }
-  for (let x = 0; x < cols; x++) {
-    for (let y = 0; y < rows; y++) {
-      let tileType = lines3[x][y];
-      mazeGrid3[x][y] = tileType;
-    }
-  }
-  grid = mazeGrid;
+  // for (let x = 0; x < cols; x++) {
+  //   for (let y = 0; y < rows; y++) {
+  //     let tileType = lines[x][y];
+  //     mazeGrid[x][y] = tileType;
+  //   }
+  // }
+  // for (let x = 0; x < cols; x++) {
+  //   for (let y = 0; y < rows; y++) {
+  //     let tileType = lines2[x][y];
+  //     mazeGrid2[x][y] = tileType;
+  //   }
+  // }
+  // for (let x = 0; x < cols; x++) {
+  //   for (let y = 0; y < rows; y++) {
+  //     let tileType = lines3[x][y];
+  //     mazeGrid3[x][y] = tileType;
+  //   }
+  // }
 }
 
 function draw() {
   background(255);
   displayGrid();
   playerThing();
-  textSize(40);
-  text("Use Arrow Keys to move.", width / 2 + 150, height / 4 - 200);
-  // Shown at the end screen
-  if (gridMode === 4) {
-    textSize(50);
-    fill(random(255),random(255),random(255));
-    text("You finished the MAZE! Well Done!",width / 2 - 300, height / 2);
-  }
 }
 
 // disables window scrolling
@@ -110,45 +78,42 @@ function playerThing() {
 }
 
 //just a mini cheat mode
-function mousePressed() {
-  let xCoord = floor(mouseX / cellSize);
-  let yCoord = floor(mouseY / cellSize);
-
-  if (grid[xCoord][yCoord] === 1 || grid[xCoord][yCoord] === "1" && cheatMode) {
-    grid[xCoord][yCoord] = 0;
-  }
-  else if (grid[xCoord][yCoord] === 0 || grid[xCoord][yCoord] === "0" && cheatMode) {
-    grid[xCoord][yCoord] = 1;
-  }
-}
+// function mousePressed() {
+//   let xCoord = floor(mouseX / cellSize);
+//   let yCoord = floor(mouseY / cellSize);
+//
+//   if (grid[xCoord][yCoord] === 1 || grid[xCoord][yCoord] === "1") {
+//     grid[xCoord][yCoord] = 0;
+//   }
+//   else if (grid[xCoord][yCoord] === 0 || grid[xCoord][yCoord] === "0") {
+//     grid[xCoord][yCoord] = 1;
+//   }
+// }
 
 // goes to the next maze after reaching the green square
-function nextLevel() {
-  gridMode += 1;
-  if (gridMode === 1) {
-    clearOutBodies();
-    moveX = 0;
-    moveY = 5;
-    grid = mazeGrid;
-  }
-  else if (gridMode === 2) {
-    clearOutBodies();
-    moveX = 8;
-    moveY = 26;
-    grid = mazeGrid2;
-  }
-  if (gridMode === 3) {
-    clearOutBodies();
-    moveX = 32;
-    moveY = 25;
-    grid = mazeGrid3;
-  }
-}
+// function nextLevel() {
+//   gridMode += 1;
+//   if (gridMode === 1) {
+//     clearOutBodies();
+//     moveX = 0;
+//     moveY = 5;
+//     grid = mazeGrid;
+//   }
+//   else if (gridMode === 2) {
+//     clearOutBodies();
+//     moveX = 8;
+//     moveY = 26;
+//     grid = mazeGrid2;
+//   }
+//   if (gridMode === 3) {
+//     clearOutBodies();
+//     moveX = 32;
+//     moveY = 25;
+//     grid = mazeGrid3;
+//   }
+// }
 
 function keyPressed() {
-  if (key === "c" || key === "C") {
-    cheatMode = !cheatMode;
-  }
   // if (key === "j" || key === "J") {
   //   clearOutBodies();
   //   moveX = 0;
@@ -178,7 +143,7 @@ function keyPressed() {
     }
     else if (grid[moveX][moveY + 1] === 3 || grid[moveX][moveY + 1] === "3") {
       moveY += 1;
-      nextLevel();
+      // nextLevel();
     }
   }
   else if (keyCode === UP_ARROW && moveY > 0 && gridMode < 4) {
@@ -188,7 +153,7 @@ function keyPressed() {
     }
     else if (grid[moveX][moveY - 1] === 3 || grid[moveX][moveY - 1] === "3") {
       moveY -= 1;
-      nextLevel();
+      // nextLevel();
     }
   }
   if (keyCode === RIGHT_ARROW && moveX < cols - 1 && gridMode < 4) {
@@ -198,7 +163,7 @@ function keyPressed() {
     }
     else if (grid[moveX + 1][moveY] === 3 || grid[moveX + 1][moveY] === "3") {
       moveX += 1;
-      nextLevel();
+      // nextLevel();
     }
   }
   else if (keyCode === LEFT_ARROW && moveX > 0 && gridMode < 4) {
@@ -208,7 +173,7 @@ function keyPressed() {
     }
     else if (grid[moveX - 1][moveY] === 3 || grid[moveX - 1][moveY] === "3") {
       moveX -= 1;
-      nextLevel();
+      // nextLevel();
     }
   }
 }
