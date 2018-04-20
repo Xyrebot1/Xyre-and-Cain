@@ -9,6 +9,17 @@ let cellSize;
 let moveX;
 let moveY;
 let gridMode;
+let testTile;
+let mapLoad;
+let mapData;
+let commonTile;
+
+function preload() {
+  mapLoad = "assets/Maps/TestMap.txt";
+  mapData = loadStrings(mapLoad);
+
+  commonTile = loadImage("images/Tile_5.png");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -18,12 +29,12 @@ function setup() {
   moveY = 0;
   gridMode = 1;
 
-  // for (let x = 0; x < cols; x++) {
-  //   for (let y = 0; y < rows; y++) {
-  //     let tileType = lines[x][y];
-  //     mazeGrid[x][y] = tileType;
-  //   }
-  // }
+  for (let x = 0; x < cols; x++) {
+    for (let y = 0; y < rows; y++) {
+      let tileType = mapData[x][y];
+      grid[x][y] = tileType;
+    }
+  }
   // for (let x = 0; x < cols; x++) {
   //   for (let y = 0; y < rows; y++) {
   //     let tileType = lines2[x][y];
@@ -56,7 +67,7 @@ function displayGrid() {
   for (let x = 0; x < cols; x++) {
     for (let y = 0; y < rows; y++) {
       if (grid[x][y] === 0 || grid[x][y] === "0") {
-        fill(240);
+        image(commonTile, x * cols, y * cols, cols, rows);
       }
       else if (grid[x][y] === 2 || grid[x][y] === "2") {
         fill(255, 50, 50);
