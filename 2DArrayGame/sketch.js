@@ -24,7 +24,7 @@ function preload() {
   commonTile = loadImage("images/Tile_5.png");
   upperTile = loadImage("images/Tile_8.png");
   lowerTile = loadImage("images/Tile_2.png");
-  player = loadImage("images/Object_7.png");
+  // player = loadImage("images/Object_7.png");
 }
 
 function setup() {
@@ -64,9 +64,8 @@ function displayGrid() {
         image(commonTile, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 2 || grid[x][y] === "2") {
-        // fill(255, 50, 50);
-        // rect(x * cellSize, y * cellSize, cellSize, cellSize);
-        image(player, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 3 || grid[x][y] === "3") {
         image(upperTile, x * cellSize, y * cellSize, cellSize, cellSize);
