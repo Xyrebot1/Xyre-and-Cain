@@ -76,7 +76,8 @@ function displayGrid() {
       else {
         fill(50);
       }
-      // rect(x * cellSize, y * cellSize, cellSize, cellSize);
+      noFill();
+      rect(x * cellSize, y * cellSize, cellSize, cellSize);
     }
   }
 }
