@@ -13,12 +13,18 @@ let testTile;
 let mapLoad;
 let mapData;
 let commonTile;
+let upperTile;
+let lowerTile;
+let player;
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
   mapData = loadStrings(mapLoad);
 
   commonTile = loadImage("images/Tile_5.png");
+  upperTile = loadImage("images/Tile_8.png");
+  lowerTile = loadImage("images/Tile_2.png");
+  player = loadImage("images/Object_7.png");
 }
 
 function setup() {
@@ -26,7 +32,7 @@ function setup() {
   cellSize = width / cols;
   grid = createEmpty2dArray(cols, rows);
   moveX = 0;
-  moveY = 0;
+  moveY = 1;
   gridMode = 1;
 
   for (let x = 0; x < cols; x++) {
@@ -35,18 +41,6 @@ function setup() {
       grid[x][y] = tileType;
     }
   }
-  // for (let x = 0; x < cols; x++) {
-  //   for (let y = 0; y < rows; y++) {
-  //     let tileType = lines2[x][y];
-  //     mazeGrid2[x][y] = tileType;
-  //   }
-  // }
-  // for (let x = 0; x < cols; x++) {
-  //   for (let y = 0; y < rows; y++) {
-  //     let tileType = lines3[x][y];
-  //     mazeGrid3[x][y] = tileType;
-  //   }
-  // }
 }
 
 function draw() {
@@ -67,18 +61,23 @@ function displayGrid() {
   for (let x = 0; x < cols; x++) {
     for (let y = 0; y < rows; y++) {
       if (grid[x][y] === 0 || grid[x][y] === "0") {
-        image(commonTile, x * cols, y * cols, cols, rows);
+        image(commonTile, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 2 || grid[x][y] === "2") {
-        fill(255, 50, 50);
+        // fill(255, 50, 50);
+        // rect(x * cellSize, y * cellSize, cellSize, cellSize);
+        image(player, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 3 || grid[x][y] === "3") {
-        fill(0, 255, 50);
+        image(upperTile, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === 4 || grid[x][y] === "4") {
+        image(lowerTile, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else {
         fill(50);
       }
-      rect(x * cellSize, y * cellSize, cellSize, cellSize);
+      // rect(x * cellSize, y * cellSize, cellSize, cellSize);
     }
   }
 }
@@ -125,34 +124,13 @@ function playerThing() {
 // }
 
 function keyPressed() {
-  // if (key === "j" || key === "J") {
-  //   clearOutBodies();
-  //   moveX = 0;
-  //   moveY = 5;
-  //   grid = mazeGrid;
-  //   gridMode = 1;
-  // }
-  // else if (key === "k" || key === "K") {
-  //   clearOutBodies();
-  //   moveX = 8;
-  //   moveY = 26;
-  //   grid = mazeGrid2;
-  //   gridMode = 2;
-  // }
-  // if (key === "s" || key === "S") {
-  //   clearOutBodies();
-  //   moveX = 32;
-  //   moveY = 25;
-  //   grid = mazeGrid3;
-  //   gridMode = 3;
-  // }
   // Arrow keys are used to make the red square move in the screen, can't go through the black squares.
   if (keyCode === DOWN_ARROW && moveY < rows - 1 && gridMode < 4) {
     grid[moveX][moveY] = 0;
     if (grid[moveX][moveY + 1] === 0 || grid[moveX][moveY + 1] === "0") {
       moveY += 1;
     }
-    else if (grid[moveX][moveY + 1] === 3 || grid[moveX][moveY + 1] === "3") {
+    else if (grid[moveX][moveY + 1] === 1 || grid[moveX][moveY + 1] === "1") {
       moveY += 1;
       // nextLevel();
     }
@@ -162,7 +140,7 @@ function keyPressed() {
     if (grid[moveX][moveY - 1] === 0 || grid[moveX][moveY - 1] === "0") {
       moveY -= 1;
     }
-    else if (grid[moveX][moveY - 1] === 3 || grid[moveX][moveY - 1] === "3") {
+    else if (grid[moveX][moveY - 1] === 1 || grid[moveX][moveY - 1] === "1") {
       moveY -= 1;
       // nextLevel();
     }
@@ -172,7 +150,7 @@ function keyPressed() {
     if (grid[moveX + 1][moveY] === 0 || grid[moveX + 1][moveY] === "0") {
       moveX += 1;
     }
-    else if (grid[moveX + 1][moveY] === 3 || grid[moveX + 1][moveY] === "3") {
+    else if (grid[moveX + 1][moveY] === 1 || grid[moveX + 1][moveY] === "1") {
       moveX += 1;
       // nextLevel();
     }
@@ -182,7 +160,7 @@ function keyPressed() {
     if (grid[moveX - 1][moveY] === 0 || grid[moveX - 1][moveY] === "0") {
       moveX -= 1;
     }
-    else if (grid[moveX - 1][moveY] === 3 || grid[moveX - 1][moveY] === "3") {
+    else if (grid[moveX - 1][moveY] === 1 || grid[moveX - 1][moveY] === "1") {
       moveX -= 1;
       // nextLevel();
     }
@@ -213,74 +191,3 @@ function createEmpty2dArray(cols, rows) {
   }
   return emptyGrid;
 }
-
-// function createMaze2dArray(cols, rows) {
-//   let mazeGrid = [];
-//   let test = 2;
-//   let test2 = 5;
-//   let number = 0;
-//   let number2 = 1;
-//   let wall = 2;
-//   let wall2 = 6;
-//   for (let x = 0; x < cols; x++) {
-//     mazeGrid.push([]);
-//     number += 1;
-//     number2 += 1;
-//     wall = 2;
-//     wall2 = 6;
-//     for (let y = 0; y < rows; y++) {
-//       if (number === test && y === 0) {
-//         mazeGrid[x].push(1);
-//         mazeGrid[x].push(1);
-//       }
-//       else if (number2 === test2 && y === 1) {
-//         for (let z = 0; z < 5; z++) {
-//           mazeGrid[x].push(1);
-//         }
-//       }
-//       if (number === test && y === 3) {
-//         for (let z = 0; z < 5; z++) {
-//           mazeGrid[x].push(1);
-//         }
-//       }
-//       else if (number2 === test2 && y === 4) {
-//         for (let z = 0; z < 5; z++) {
-//           mazeGrid[x].push(1);
-//         }
-//       }
-//       if (number === test && y === 6) {
-//         for (let z = 0; z < 5; z++) {
-//           mazeGrid[x].push(1);
-//         }
-//       }
-//       else if (number2 === test2 && y === 7) {
-//         for (let z = 0; z < 5; z++) {
-//           mazeGrid[x].push(1);
-//         }
-//       }
-//       if (number2 === test2 && y === 10) {
-//         mazeGrid[x].push(1);
-//         mazeGrid[x].push(1);
-//         test2 += 4;
-//       }
-//       else if (number === test && y === 9) {
-//         for (let z = 0; z < 5; z++) {
-//           mazeGrid[x].push(1);
-//         }
-//         test += 4;
-//       }
-//       if (mazeGrid[x][wall] === 0 && x < cols - 1) {
-//         mazeGrid[x].push(1);
-//         wall += 8;
-//       }
-//       else if (mazeGrid[x][wall2] === 0 && x > 0) {
-//         mazeGrid[x].push(1);
-//         wall2 += 8;
-//       }
-//       else {
-//         mazeGrid[x].push(0);
-//       }
-//     }
-//   }
-//   return mazeGrid;
-// }
