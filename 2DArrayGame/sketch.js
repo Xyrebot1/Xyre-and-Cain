@@ -14,6 +14,8 @@ let mapLoad;
 let mapData;
 let commonTile;
 let upperTile;
+let upperTileRightCorner;
+let upperTileLeftCorner;
 let lowerTile;
 let player;
 
