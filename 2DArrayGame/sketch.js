@@ -14,9 +14,17 @@ let mapLoad;
 let mapData;
 let commonTile;
 let upperTile;
+let upperTileRightOpening;
+let upperTileLeftOpening;
 let upperTileRightCorner;
 let upperTileLeftCorner;
 let lowerTile;
+let lowerTileRightOpening;
+let lowerTileLeftOpening;
+let lowerTileRightCorner;
+let lowerTileLeftCorner;
+let rightTile;
+let leftTile;
 let player;
 
 function preload() {
@@ -25,7 +33,13 @@ function preload() {
 
   commonTile = loadImage("images/Tile_5.png");
   upperTile = loadImage("images/Tile_8.png");
+  upperTileRightOpening = loadImage("images/Tile_11.png");
+  upperTileLeftOpening = loadImage("images/Tile_10.png");
   lowerTile = loadImage("images/Tile_2.png");
+  lowerTileRightOpening = loadImage("images/Tile_13.png");
+  lowerTileLeftOpening = loadImage("images/Tile_12.png");
+  rightTile = loadImage("images/Tile_4.png");
+  leftTile = loadImage("images/Tile_6.png");
   // player = loadImage("images/Object_7.png");
 }
 
@@ -33,7 +47,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   cellSize = width / cols;
   grid = createEmpty2dArray(cols, rows);
-  moveX = 0;
+  moveX = 1;
   moveY = 1;
   gridMode = 1;
 
@@ -46,7 +60,7 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  background(255, 228, 100);
   displayGrid();
   playerThing();
 }
@@ -74,6 +88,24 @@ function displayGrid() {
       }
       else if (grid[x][y] === 4 || grid[x][y] === "4") {
         image(lowerTile, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === 5 || grid[x][y] === "5") {
+        image(upperTileRightOpening, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === 6 || grid[x][y] === "6") {
+        image(upperTileLeftOpening, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === 7 || grid[x][y] === "7") {
+        image(lowerTileRightOpening, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === 8 || grid[x][y] === "8") {
+        image(lowerTileLeftOpening, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === "|") {
+        image(rightTile, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === ":") {
+        image(leftTile, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else {
         fill(50);
