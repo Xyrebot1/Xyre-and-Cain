@@ -68,7 +68,7 @@ function setup() {
 }
 
 function draw() {
-  background(255, 228, 100);
+  background(0, 200, 255);
   displayGrid();
   playerThing();
 }
@@ -128,11 +128,10 @@ function displayGrid() {
         image(leftTile, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else {
-        fill(50);
+        fill(0, 200, 255);
       }
       noFill();
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
-
     }
   }
 }
