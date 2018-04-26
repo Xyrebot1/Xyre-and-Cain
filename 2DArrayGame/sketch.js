@@ -35,9 +35,13 @@ function preload() {
   upperTile = loadImage("images/Tile_8.png");
   upperTileRightOpening = loadImage("images/Tile_11.png");
   upperTileLeftOpening = loadImage("images/Tile_10.png");
+  upperTileRightCorner = loadImage("images/Tile_7.png");
+  upperTileLeftCorner = loadImage("images/Tile_9.png");
   lowerTile = loadImage("images/Tile_2.png");
   lowerTileRightOpening = loadImage("images/Tile_13.png");
   lowerTileLeftOpening = loadImage("images/Tile_12.png");
+  lowerTileRightCorner = loadImage("images/Tile_1.png");
+  lowerTileLeftCorner = loadImage("images/Tile_3.png");
   rightTile = loadImage("images/Tile_4.png");
   leftTile = loadImage("images/Tile_6.png");
   // player = loadImage("images/Object_7.png");
@@ -95,11 +99,23 @@ function displayGrid() {
       else if (grid[x][y] === 6 || grid[x][y] === "6") {
         image(upperTileLeftOpening, x * cellSize, y * cellSize, cellSize, cellSize);
       }
+      else if (grid[x][y] === "*") {
+        image(upperTileRightCorner, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === "#") {
+        image(upperTileLeftCorner, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
       else if (grid[x][y] === 7 || grid[x][y] === "7") {
         image(lowerTileRightOpening, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 8 || grid[x][y] === "8") {
         image(lowerTileLeftOpening, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === "$") {
+        image(lowerTileRightCorner, x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+      else if (grid[x][y] === "%") {
+        image(lowerTileLeftCorner, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "|") {
         image(rightTile, x * cellSize, y * cellSize, cellSize, cellSize);
@@ -120,19 +136,6 @@ function displayGrid() {
 function playerThing() {
   grid[moveX][moveY] = 2;
 }
-
-//just a mini cheat mode
-// function mousePressed() {
-//   let xCoord = floor(mouseX / cellSize);
-//   let yCoord = floor(mouseY / cellSize);
-//
-//   if (grid[xCoord][yCoord] === 1 || grid[xCoord][yCoord] === "1") {
-//     grid[xCoord][yCoord] = 0;
-//   }
-//   else if (grid[xCoord][yCoord] === 0 || grid[xCoord][yCoord] === "0") {
-//     grid[xCoord][yCoord] = 1;
-//   }
-// }
 
 // goes to the next maze after reaching the green square
 // function nextLevel() {
@@ -158,52 +161,50 @@ function playerThing() {
 // }
 
 
-  function keyPressed() {
-    if (grid[x][y] === 0){
-      if (keyPressed === "w" || keyPressed === "W" && moveY > 0) {
-        grid[moveX][moveY] = 0;
-        if (grid[moveX][moveY - 1] === 0 || grid[moveX][moveY - 1] === "0") {
-          moveY -= 1;
-        }
-        else if (grid[moveX][moveY - 1] === 1 || grid[moveX][moveY - 1] === "1") {
-          moveY -=1;
-          //next level
-        }
-      }
-      else if (keyPressed === "s" || keyPressed === "S" && moveY < rows - 1) {
-        grid[moveX][moveY] = 0;
-        if (grid[moveX][moveY + 1] === 0 || grid[moveX][moveY + 1] === "0") {
-          moveY += 1;
-        }
-        else if (grid[moveX][moveY + 1] === 1 || grid[moveX][moveY + 1] === "1") {
-          moveY += 1;
-          //next level
-        }
-      }
-      else if (keyPressed === "a" || keyPressed === "A" && moveX > 0) {
-        grid[moveX][moveY] = 0;
-        if (grid[moveX - 1][moveY] === 0 || grid[moveX - 1][moveY] === "0"){
-          moveX -= 1;
-        }
-        else if (grid[moveX - 1][moveY] === 1 || grid[moveX - 1][moveY] === "1") {
-          moveX -=1;
-          //next level
-        }
-      }
-      else if (keyPressed === "d" || keyPressed === "D" && moveX < cols - 1) {
-        grid[moveX][moveY] = 0;
-        if (grid[moveX + 1][moveY] === 0 || grid[moveX +1][moveY] === "0") {
-          moveX += 1;
-        }
-        else if (grid[moveX + 1][moveY] === 1 || grid[moveX + 1][moveY] === "1"){
-          moveX += 1;
-          //next level
-        }
-      }
-
-
+function keyPressed() {
+  // if (grid[moveX][moveY] === 0) {
+  if (keyPressed === "w" || keyPressed === "W" && moveY > 0) {
+    grid[moveX][moveY] = 0;
+    if (grid[moveX][moveY - 1] === 0 || grid[moveX][moveY - 1] === "0") {
+      moveY -= 1;
+    }
+    else if (grid[moveX][moveY - 1] === 1 || grid[moveX][moveY - 1] === "1") {
+      moveY -= 1;
+      //next level
     }
   }
+  else if (keyPressed === "s" || keyPressed === "S" && moveY < rows - 1) {
+    grid[moveX][moveY] = 0;
+    if (grid[moveX][moveY + 1] === 0 || grid[moveX][moveY + 1] === "0") {
+      moveY += 1;
+    }
+    else if (grid[moveX][moveY + 1] === 1 || grid[moveX][moveY + 1] === "1") {
+      moveY += 1;
+      //next level
+    }
+  }
+  else if (keyPressed === "a" || keyPressed === "A" && moveX > 0) {
+    grid[moveX][moveY] = 0;
+    if (grid[moveX - 1][moveY] === 0 || grid[moveX - 1][moveY] === "0") {
+      moveX -= 1;
+    }
+    else if (grid[moveX - 1][moveY] === 1 || grid[moveX - 1][moveY] === "1") {
+      moveX -= 1;
+      //next level
+    }
+  }
+  else if (keyPressed === "d" || keyPressed === "D" && moveX < cols - 1) {
+    grid[moveX][moveY] = 0;
+    if (grid[moveX + 1][moveY] === 0 || grid[moveX + 1][moveY] === "0") {
+      moveX += 1;
+    }
+    else if (grid[moveX + 1][moveY] === 1 || grid[moveX + 1][moveY] === "1") {
+      moveX += 1;
+      //next level
+    }
+  }
+}
+// }
 
 //Just so there isn't two red squares in the screen
 function clearOutBodies() {
