@@ -26,6 +26,8 @@ let lowerTileLeftCorner;
 let rightTile;
 let leftTile;
 let player;
+let playerX;
+let playerY;
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
@@ -50,6 +52,8 @@ function setup() {
   moveX = 1;
   moveY = 1;
   gridMode = 1;
+  playerX = 0;
+  playerY = 0;
 
   for (let x = 0; x < cols; x++) {
     for (let y = 0; y < rows; y++) {
@@ -112,13 +116,20 @@ function displayGrid() {
       }
       noFill();
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
+
     }
   }
 }
 
 //The red square in the screen
+// function playerThing() {
+//   grid[moveX][moveY] = 2;
+//
+// }
+
 function playerThing() {
-  grid[moveX][moveY] = 2;
+  fill(225, 255, 0);
+  rect(playerX * cellSize, playerY * cellSize, cellSize, cellSize);
 }
 
 //just a mini cheat mode
@@ -157,53 +168,71 @@ function playerThing() {
 //   }
 // }
 
-
-  function keyPressed() {
-    if (grid[x][y] === 0){
-      if (keyPressed === "w" || keyPressed === "W" && moveY > 0) {
-        grid[moveX][moveY] = 0;
-        if (grid[moveX][moveY - 1] === 0 || grid[moveX][moveY - 1] === "0") {
-          moveY -= 1;
-        }
-        else if (grid[moveX][moveY - 1] === 1 || grid[moveX][moveY - 1] === "1") {
-          moveY -=1;
-          //next level
-        }
-      }
-      else if (keyPressed === "s" || keyPressed === "S" && moveY < rows - 1) {
-        grid[moveX][moveY] = 0;
-        if (grid[moveX][moveY + 1] === 0 || grid[moveX][moveY + 1] === "0") {
-          moveY += 1;
-        }
-        else if (grid[moveX][moveY + 1] === 1 || grid[moveX][moveY + 1] === "1") {
-          moveY += 1;
-          //next level
-        }
-      }
-      else if (keyPressed === "a" || keyPressed === "A" && moveX > 0) {
-        grid[moveX][moveY] = 0;
-        if (grid[moveX - 1][moveY] === 0 || grid[moveX - 1][moveY] === "0"){
-          moveX -= 1;
-        }
-        else if (grid[moveX - 1][moveY] === 1 || grid[moveX - 1][moveY] === "1") {
-          moveX -=1;
-          //next level
-        }
-      }
-      else if (keyPressed === "d" || keyPressed === "D" && moveX < cols - 1) {
-        grid[moveX][moveY] = 0;
-        if (grid[moveX + 1][moveY] === 0 || grid[moveX +1][moveY] === "0") {
-          moveX += 1;
-        }
-        else if (grid[moveX + 1][moveY] === 1 || grid[moveX + 1][moveY] === "1"){
-          moveX += 1;
-          //next level
-        }
-      }
-
-
-    }
+function keyPressed() {
+  if (keyPressed === "w" || keyPressed === "W") {
+    playerY -= 1;
+    return playerY;
   }
+  else if (keyPressed === "s" || keyPressed === "S") {
+    playerY += 1;
+    return playerY;
+  }
+  else if (keyPressed === "a" || keyPressed === "A") {
+    playerX -= 1;
+    return playerX;
+  }
+  else if (keyPressed === "d" || keyPressed === "D") {
+    playerX += 1;
+    return playerX;
+  }
+}
+
+  // function keyPressed() {
+  //   if (grid[moveX][moveY] === 0){
+  //     if (keyPressed === "w" || keyPressed === "W" && moveY > 0) {
+  //       grid[moveX][moveY] = 0;
+  //       if (grid[moveX][moveY - 1] === 0 || grid[moveX][moveY - 1] === "0") {
+  //         moveY -= 1;
+  //       }
+  //       else if (grid[moveX][moveY - 1] === 1 || grid[moveX][moveY - 1] === "1") {
+  //         moveY -=1;
+  //         //next level
+  //       }
+  //     }
+  //     else if (keyPressed === "s" || keyPressed === "S" && moveY < rows - 1) {
+  //       grid[moveX][moveY] = 0;
+  //       if (grid[moveX][moveY + 1] === 0 || grid[moveX][moveY + 1] === "0") {
+  //         moveY += 1;
+  //       }
+  //       else if (grid[moveX][moveY + 1] === 1 || grid[moveX][moveY + 1] === "1") {
+  //         moveY += 1;
+  //         //next level
+  //       }
+  //     }
+  //     else if (keyPressed === "a" || keyPressed === "A" && moveX > 0) {
+  //       grid[moveX][moveY] = 0;
+  //       if (grid[moveX - 1][moveY] === 0 || grid[moveX - 1][moveY] === "0"){
+  //         moveX -= 1;
+  //       }
+  //       else if (grid[moveX - 1][moveY] === 1 || grid[moveX - 1][moveY] === "1") {
+  //         moveX -=1;
+  //         //next level
+  //       }
+  //     }
+  //     else if (keyPressed === "d" || keyPressed === "D" && moveX < cols - 1) {
+  //       grid[moveX][moveY] = 0;
+  //       if (grid[moveX + 1][moveY] === 0 || grid[moveX +1][moveY] === "0") {
+  //         moveX += 1;
+  //       }
+  //       else if (grid[moveX + 1][moveY] === 1 || grid[moveX + 1][moveY] === "1"){
+  //         moveX += 1;
+  //         //next level
+  //       }
+  //     }
+  //
+  //
+  //   }
+  // }
 
 //Just so there isn't two red squares in the screen
 function clearOutBodies() {
