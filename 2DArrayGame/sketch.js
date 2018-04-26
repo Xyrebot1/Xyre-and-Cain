@@ -145,7 +145,7 @@ function displayGrid() {
 
 function playerThing() {
   fill(225, 255, 0);
-  rect(playerX * cellSize, playerY * cellSize, cellSize, cellSize);
+  rect(playerX, playerY, cellSize, cellSize);
 }
 
 // goes to the next maze after reaching the green square
@@ -174,20 +174,18 @@ function playerThing() {
 function keyPressed() {
   if (keyPressed === "w" || keyPressed === "W") {
     playerY -= 1;
-    return playerY;
   }
   else if (keyPressed === "s" || keyPressed === "S") {
     playerY += 1;
-    return playerY;
   }
   else if (keyPressed === "a" || keyPressed === "A") {
     playerX -= 1;
-    return playerX;
   }
   else if (keyPressed === "d" || keyPressed === "D") {
     playerX += 1;
-    return playerX;
   }
+  return playerX;
+  return playerY;
 }
 
   // function keyPressed() {
