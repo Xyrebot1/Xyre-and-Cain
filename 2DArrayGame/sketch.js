@@ -56,8 +56,8 @@ function setup() {
   moveX = 1;
   moveY = 1;
   gridMode = 1;
-  playerX = 0;
-  playerY = 0;
+  playerX = 50;
+  playerY = 50;
 
   for (let x = 0; x < cols; x++) {
     for (let y = 0; y < rows; y++) {
@@ -172,20 +172,18 @@ function playerThing() {
 // }
 
 function keyPressed() {
-  if (keyPressed === "w" || keyPressed === "W") {
+  if (key === "w" || key === "W") {
     playerY -= 1;
   }
-  else if (keyPressed === "s" || keyPressed === "S") {
+  else if (key === "s" || key === "S") {
     playerY += 1;
   }
-  else if (keyPressed === "a" || keyPressed === "A") {
+  else if (key === "a" || key === "A") {
     playerX -= 1;
   }
-  else if (keyPressed === "d" || keyPressed === "D") {
+  else if (key === "d" || key === "D") {
     playerX += 1;
   }
-  return playerX;
-  return playerY;
 }
 
 // function keyPressed() {
