@@ -75,6 +75,8 @@ function draw() {
   playerThing();
   movePlayer();
   menuBar();
+  movePlayer();
+  menuBar();
 }
 
 // disables window scrolling
@@ -179,21 +181,6 @@ function menuBar() {
 //   }
 // }
 
-
-function keyPressed() {
-  if (key === "w" || key === "W") {
-    playerY -= 1;
-  }
-  else if (key === "s" || key === "S") {
-    playerY += 1;
-  }
-  else if (key === "a" || key === "A") {
-    playerX -= 1;
-  }
-  else if (key === "d" || key === "D") {
-    playerX += 1;
-  }
-}
 
 function movePlayer() {
   if (keyIsDown(87)) {
