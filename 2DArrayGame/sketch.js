@@ -71,6 +71,7 @@ function draw() {
   background(0, 200, 255);
   displayGrid();
   playerThing();
+  menuBar();
 }
 
 // disables window scrolling
@@ -145,6 +146,11 @@ function displayGrid() {
 function playerThing() {
   fill(225, 255, 0);
   rect(playerX, playerY, cellSize, cellSize);
+}
+
+function menuBar() {
+  fill(153, 102, 51);
+  rect(0, rows * cellSize, width, 3 * cellSize);
 }
 
 // goes to the next maze after reaching the green square
