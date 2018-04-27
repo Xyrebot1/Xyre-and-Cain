@@ -28,11 +28,13 @@ let leftTile;
 let player;
 let playerX;
 let playerY;
+let menuTexture;
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
   mapData = loadStrings(mapLoad);
 
+  menuTexture = loadImage("images/qubodup-light_wood.png");
   commonTile = loadImage("images/Tile_5.png");
   upperTile = loadImage("images/Tile_8.png");
   upperTileRightOpening = loadImage("images/Tile_11.png");
