@@ -152,8 +152,7 @@ function playerThing() {
 }
 
 function menuBar() {
-  fill(153, 102, 51);
-  rect(0, rows * cellSize, width, 3 * cellSize);
+  image(menuTexture, 0, rows * cellSize, width, 3 * cellSize);
 }
 
 // goes to the next maze after reaching the green square
