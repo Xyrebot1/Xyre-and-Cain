@@ -73,8 +73,11 @@ function draw() {
   background(0, 200, 255);
   displayGrid();
   playerThing();
+<<<<<<< HEAD
   movePlayer();
   menuBar();
+=======
+>>>>>>> parent of d6824be... data
 }
 
 // disables window scrolling
@@ -179,18 +182,18 @@ function menuBar() {
 //   }
 // }
 
-function movePlayer() {
-  if (keyIsDown(87)) {
-    playerY -= 3;
+function keyPressed() {
+  if (key === "w" || key === "W") {
+    playerY -= 1;
   }
-  else if (keyIsDown(83)) {
-    playerY += 3;
+  else if (key === "s" || key === "S") {
+    playerY += 1;
   }
-  else if (keyIsDown(65)) {
-    playerX -= 3;
+  else if (key === "a" || key === "A") {
+    playerX -= 1;
   }
-  else if (keyIsDown(68)) {
-    playerX += 3;
+  else if (key === "d" || key === "D") {
+    playerX += 1;
   }
 }
 
