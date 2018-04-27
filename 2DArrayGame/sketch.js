@@ -28,19 +28,13 @@ let leftTile;
 let player;
 let playerX;
 let playerY;
-<<<<<<< HEAD
 let menuTexture;
-=======
->>>>>>> parent of 3764fbb... Revert "New Stuff"
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
   mapData = loadStrings(mapLoad);
 
-<<<<<<< HEAD
   menuTexture = loadImage("images/qubodup-light_wood.png");
-=======
->>>>>>> parent of 3764fbb... Revert "New Stuff"
   commonTile = loadImage("images/Tile_5.png");
   upperTile = loadImage("images/Tile_8.png");
   upperTileRightOpening = loadImage("images/Tile_11.png");
@@ -79,16 +73,8 @@ function draw() {
   background(0, 200, 255);
   displayGrid();
   playerThing();
-<<<<<<< HEAD
-<<<<<<< HEAD
   movePlayer();
   menuBar();
-=======
->>>>>>> parent of d6824be... data
-=======
-  movePlayer();
-  menuBar();
->>>>>>> parent of 3764fbb... Revert "New Stuff"
 }
 
 // disables window scrolling
@@ -193,7 +179,7 @@ function menuBar() {
 //   }
 // }
 
-<<<<<<< HEAD
+
 function keyPressed() {
   if (key === "w" || key === "W") {
     playerY -= 1;
@@ -206,7 +192,9 @@ function keyPressed() {
   }
   else if (key === "d" || key === "D") {
     playerX += 1;
-=======
+  }
+}
+
 function movePlayer() {
   if (keyIsDown(87)) {
     playerY -= 3;
@@ -219,7 +207,6 @@ function movePlayer() {
   }
   else if (keyIsDown(68)) {
     playerX += 3;
->>>>>>> parent of 3764fbb... Revert "New Stuff"
   }
 }
 
