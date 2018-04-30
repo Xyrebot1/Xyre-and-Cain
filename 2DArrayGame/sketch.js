@@ -29,6 +29,8 @@ let player;
 let playerX;
 let playerY;
 let menuTexture;
+let playerBlocked;
+let area;
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
@@ -72,7 +74,9 @@ function setup() {
 function draw() {
   background(0, 200, 255);
   displayGrid();
+  //displayLevel();
   playerThing();
+  //canPlayerMove();
   movePlayer();
   menuBar();
   movePlayer();
@@ -148,6 +152,12 @@ function displayGrid() {
 //
 // }
 
+function displayLevel() {
+  if (area === 0) {
+    
+  }
+}
+
 function playerThing() {
   fill(225, 255, 0);
   rect(playerX, playerY, cellSize, cellSize);
@@ -181,6 +191,9 @@ function menuBar() {
 //   }
 // }
 
+function canPlayerMove() {
+
+}
 
 function movePlayer() {
   if (keyIsDown(87)) {
