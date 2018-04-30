@@ -34,9 +34,9 @@ let menuTexture;
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
-  mapLoadOne = "assests/Maps/Test.txt";
+  mapLoadOne = "assets/Maps/aLevel.txt";
   mapData = loadStrings(mapLoad);
-  mapDataOne = 
+  mapDataOne = loadStrings(mapLoadOne);
 
   menuTexture = loadImage("images/qubodup-light_wood.png");
   commonTile = loadImage("images/Tile_5.png");
@@ -67,7 +67,7 @@ function setup() {
 
   for (let x = 0; x < cols; x++) {
     for (let y = 0; y < rows; y++) {
-      let tileType = mapData[x][y];
+      let tileType = mapDataOne[x][y];
       grid[x][y] = tileType;
     }
   }
