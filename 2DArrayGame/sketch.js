@@ -31,6 +31,8 @@ let player;
 let playerX;
 let playerY;
 let menuTexture;
+let playerBlocked;
+let area;
 
 
 function preload() {
@@ -75,7 +77,9 @@ function setup() {
 function draw() {
   background(0, 200, 255);
   displayGrid();
+  //displayLevel();
   playerThing();
+  //canPlayerMove();
   movePlayer();
   menuBar();
   movePlayer();
@@ -151,6 +155,12 @@ function displayGrid() {
 //
 // }
 
+function displayLevel() {
+  if (area === 0) {
+    
+  }
+}
+
 function playerThing() {
   fill(225, 255, 0);
   rect(playerX, playerY, cellSize, cellSize);
@@ -184,6 +194,7 @@ function menuBar() {
 //   }
 // }
 
+<<<<<<< HEAD
 function keyPressed() {
   if (key === "w" || key === "W") {
     playerY -= 1;
@@ -197,6 +208,10 @@ function keyPressed() {
   else if (key === "d" || key === "D") {
     playerX += 1;
   }
+=======
+function canPlayerMove() {
+
+>>>>>>> 67e5683d170f072204f056e7362ab09afec95d09
 }
 
 function movePlayer() {
