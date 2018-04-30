@@ -11,7 +11,9 @@ let moveY;
 let gridMode;
 let testTile;
 let mapLoad;
+let mapLoadOne;
 let mapData;
+let mapDataOne;
 let commonTile;
 let upperTile;
 let upperTileRightOpening;
@@ -29,6 +31,7 @@ let player;
 let playerX;
 let playerY;
 let menuTexture;
+
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
@@ -181,6 +184,20 @@ function menuBar() {
 //   }
 // }
 
+function keyPressed() {
+  if (key === "w" || key === "W") {
+    playerY -= 1;
+  }
+  else if (key === "s" || key === "S") {
+    playerY += 1;
+  }
+  else if (key === "a" || key === "A") {
+    playerX -= 1;
+  }
+  else if (key === "d" || key === "D") {
+    playerX += 1;
+  }
+}
 
 function movePlayer() {
   if (keyIsDown(87)) {
