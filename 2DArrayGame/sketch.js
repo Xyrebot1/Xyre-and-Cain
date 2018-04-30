@@ -36,6 +36,7 @@ function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
   mapLoadOne = "assests/Maps/Test.txt";
   mapData = loadStrings(mapLoad);
+  mapDataOne = 
 
   menuTexture = loadImage("images/qubodup-light_wood.png");
   commonTile = loadImage("images/Tile_5.png");
