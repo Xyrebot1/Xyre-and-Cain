@@ -32,6 +32,8 @@ let playerX;
 let playerY;
 let menuTexture;
 let playerIsBlocked;
+let current area;
+
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
@@ -144,15 +146,11 @@ function displayGrid() {
   }
 }
 
-//The red square in the screen
-// function playerThing() {
-//   grid[moveX][moveY] = 2;
-//
-// }
+
 
 function playerThing() {
   fill(225, 255, 0);
-  rect(playerX, playerY, cellSize, cellSize);
+  rect(playerX, playerY, cellSize / 1.5, cellSize / 1.5);
 }
 
 function menuBar() {
@@ -160,28 +158,7 @@ function menuBar() {
   rect(0, rows * cellSize, width, 3 * cellSize);
 }
 
-// goes to the next maze after reaching the green square
-// function nextLevel() {
-//   gridMode += 1;
-//   if (gridMode === 1) {
-//     clearOutBodies();
-//     moveX = 0;
-//     moveY = 5;
-//     grid = mazeGrid;
-//   }
-//   else if (gridMode === 2) {
-//     clearOutBodies();
-//     moveX = 8;
-//     moveY = 26;
-//     grid = mazeGrid2;
-//   }
-//   if (gridMode === 3) {
-//     clearOutBodies();
-//     moveX = 32;
-//     moveY = 25;
-//     grid = mazeGrid3;
-//   }
-// }
+
 
 // function isPathBlocked() {
 //   if (grid[x][y] === 0 || grid[x][y] === "0") {
