@@ -10,10 +10,12 @@ let moveX;
 let moveY;
 let gridMode;
 let testTile;
-let mapLoad;
 let mapLoadOne;
-let mapData;
+let mapLoadTwo;
+let mapLoadThree;
 let mapDataOne;
+let mapDataTwo;
+let mapDataThree;
 let commonTile;
 let upperTile;
 let upperTileRightOpening;
@@ -33,10 +35,12 @@ let playerY;
 let menuTexture;
 
 function preload() {
-  mapLoad = "assets/Maps/TestMap.txt";
-  mapLoadOne = "assets/Maps/aLevel.txt";
-  mapData = loadStrings(mapLoad);
+  mapLoadOne = "assets/Maps/MiddleLevel.txt";
+  mapLoadTwo = "assets/Maps/WestLevel.txt";
+  mapLoadThree = "assets/Maps/SouthLevel.txt";
   mapDataOne = loadStrings(mapLoadOne);
+  mapDataTwo = loadStrings(mapLoadTwo);
+  mapDataThree = loadStrings(mapLoadThree);
 
   menuTexture = loadImage("images/qubodup-light_wood.png");
   commonTile = loadImage("images/Tile_5.png");
@@ -67,7 +71,7 @@ function setup() {
 
   for (let x = 0; x < cols; x++) {
     for (let y = 0; y < rows; y++) {
-      let tileType = mapDataOne[x][y];
+      let tileType = mapDataThree[x][y];
       grid[x][y] = tileType;
     }
   }
