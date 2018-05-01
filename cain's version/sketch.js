@@ -31,6 +31,7 @@ let player;
 let playerX;
 let playerY;
 let menuTexture;
+let playerIsBlocked;
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
@@ -76,10 +77,8 @@ function draw() {
   background(0, 200, 255);
   displayGrid();
   playerThing();
-  movePlayer();
   menuBar();
   movePlayer();
-  menuBar();
 }
 
 // disables window scrolling
@@ -184,82 +183,53 @@ function menuBar() {
 //   }
 // }
 
-function keyPressed() {
-  if (key === "w" || key === "W") {
-    playerY -= 1;
-  }
-  else if (key === "s" || key === "S") {
-    playerY += 1;
-  }
-  else if (key === "a" || key === "A") {
-    playerX -= 1;
-  }
-  else if (key === "d" || key === "D") {
-    playerX += 1;
-  }
-}
-
-function movePlayer() {
-  if (keyIsDown(87)) {
-    playerY -= 3;
-  }
-  else if (keyIsDown(83)) {
-    playerY += 3;
-  }
-  else if (keyIsDown(65)) {
-    playerX -= 3;
-  }
-  else if (keyIsDown(68)) {
-    playerX += 3;
-  }
-}
-
-// function keyPressed() {
-//   if (grid[moveX][moveY] === 0){
-//     if (keyPressed === "w" || keyPressed === "W" && moveY > 0) {
-//       grid[moveX][moveY] = 0;
-//       if (grid[moveX][moveY - 1] === 0 || grid[moveX][moveY - 1] === "0") {
-//         moveY -= 1;
-//       }
-//       else if (grid[moveX][moveY - 1] === 1 || grid[moveX][moveY - 1] === "1") {
-//         moveY -=1;
-//         //next level
-//       }
-//     }
-//     else if (keyPressed === "s" || keyPressed === "S" && moveY < rows - 1) {
-//       grid[moveX][moveY] = 0;
-//       if (grid[moveX][moveY + 1] === 0 || grid[moveX][moveY + 1] === "0") {
-//         moveY += 1;
-//       }
-//       else if (grid[moveX][moveY + 1] === 1 || grid[moveX][moveY + 1] === "1") {
-//         moveY += 1;
-//         //next level
-//       }
-//     }
-//     else if (keyPressed === "a" || keyPressed === "A" && moveX > 0) {
-//       grid[moveX][moveY] = 0;
-//       if (grid[moveX - 1][moveY] === 0 || grid[moveX - 1][moveY] === "0"){
-//         moveX -= 1;
-//       }
-//       else if (grid[moveX - 1][moveY] === 1 || grid[moveX - 1][moveY] === "1") {
-//         moveX -=1;
-//         //next level
-//       }
-//     }
-//     else if (keyPressed === "d" || keyPressed === "D" && moveX < cols - 1) {
-//       grid[moveX][moveY] = 0;
-//       if (grid[moveX + 1][moveY] === 0 || grid[moveX +1][moveY] === "0") {
-//         moveX += 1;
-//       }
-//       else if (grid[moveX + 1][moveY] === 1 || grid[moveX + 1][moveY] === "1"){
-//         moveX += 1;
-//         //next level
-//       }
-//     }
-//
-//
+// function isPathBlocked() {
+//   if (grid[x][y] === 0 || grid[x][y] === "0") {
+//     playerIsBlocked = false;
+//   } else {
+//     playerIsBlocked = true;
 //   }
 // }
+
+// function movePlayer() {
+//   if (keyIsDown(87)) {
+//     if (grid[moveX][moveY] === "0" || grid[moveX][moveY] === 0) {
+//       playerY -= 3;
+//     }
+//   }
+//   else if (keyIsDown(83)) {
+//     if (grid[moveX][moveY] === "0" || grid[moveX][moveY] === 0) {
+//       playerY += 3;
+//     }
+//   }
+//   else if (keyIsDown(65)) {
+//     if (grid[moveX][moveY] === "0" || grid[moveX][moveY] === 0) {
+//       playerX -= 3;
+//     }
+//   }
+//   else if (keyIsDown(68)) {
+//     if (grid[moveX][moveY] === "0" || grid[moveX][moveY] === 0) {
+//       playerX += 3;
+//     }
+//   }
+//
+// }
+
+ function movePlayer() {
+  if (keyIsDown(87)) {
+     playerY -= 3;
+   }
+   else if (keyIsDown(83)) {
+     playerY += 3;
+   }
+   else if (keyIsDown(65)) {
+     playerX -= 3;
+   }
+   else if (keyIsDown(68)) {
+     playerX += 3;
+   }
+ }
+
 
 //Just so there isn't two red squares in the screen
 function clearOutBodies() {
