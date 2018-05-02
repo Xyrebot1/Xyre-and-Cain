@@ -35,6 +35,7 @@ let playerIsBlocked = 0;
 
 var hit = false;
 
+// to import graphical files before everything else to ensure map graphics are always displayed
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
   mapLoadOne = "assests/Maps/Test.txt";
@@ -57,6 +58,7 @@ function preload() {
   // player = loadImage("images/Object_7.png");
 }
 
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   cellSize = width / cols;
@@ -67,6 +69,7 @@ function setup() {
   playerX = 50;
   playerY = 50;
 
+// used to pull data from the map.txt file
   for (let x = 0; x < cols; x++) {
     for (let y = 0; y < rows; y++) {
       let tileType = mapData[x][y];
@@ -75,6 +78,7 @@ function setup() {
   }
 }
 
+// displays all graphical information
 function draw() {
   background(0, 200, 255);
   displayGrid();
