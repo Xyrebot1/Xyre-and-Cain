@@ -1,5 +1,5 @@
-// Maze Game
-// Xyre Abelanes
+// OverHead Game
+// Xyre Abelanes and Cain Rhode
 // April 16, 2018
 
 let rows = 14;
@@ -31,9 +31,9 @@ let player;
 let playerX;
 let playerY;
 let menuTexture;
-let playerIsBlocked;
-let current area;
+let playerIsBlocked = 0;
 
+var hit = false;
 
 function preload() {
   mapLoad = "assets/Maps/TestMap.txt";
@@ -80,7 +80,9 @@ function draw() {
   displayGrid();
   playerThing();
   menuBar();
-  movePlayer();
+  if (playerIsBlocked === 0) {
+    movePlayer();
+  }
 }
 
 // disables window scrolling
@@ -103,39 +105,63 @@ function displayGrid() {
       }
       else if (grid[x][y] === 3 || grid[x][y] === "3") {
         image(upperTile, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 4 || grid[x][y] === "4") {
         image(lowerTile, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 5 || grid[x][y] === "5") {
         image(upperTileRightOpening, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 6 || grid[x][y] === "6") {
         image(upperTileLeftOpening, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "*") {
         image(upperTileRightCorner, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "#") {
         image(upperTileLeftCorner, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 7 || grid[x][y] === "7") {
         image(lowerTileRightOpening, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 8 || grid[x][y] === "8") {
         image(lowerTileLeftOpening, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "$") {
         image(lowerTileRightCorner, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "%") {
         image(lowerTileLeftCorner, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "|") {
         image(rightTile, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === ":") {
         image(leftTile, x * cellSize, y * cellSize, cellSize, cellSize);
+        fill(255, 50, 50);
+        rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else {
         fill(0, 200, 255);
@@ -146,7 +172,14 @@ function displayGrid() {
   }
 }
 
-
+function isPlayerBlocked() {
+  hit = collidePointRect(playerX, playerY, cellSize / 1.5, cellSize / 1.5, x * cellSize, y * cellSize, cellSize, cellSize);
+  if (hit) {
+    playerIsBlocked = 1;
+  } else {
+    playerIsBlocked = 0;
+  }
+}
 
 function playerThing() {
   fill(225, 255, 0);
@@ -158,39 +191,6 @@ function menuBar() {
   rect(0, rows * cellSize, width, 3 * cellSize);
 }
 
-
-
-// function isPathBlocked() {
-//   if (grid[x][y] === 0 || grid[x][y] === "0") {
-//     playerIsBlocked = false;
-//   } else {
-//     playerIsBlocked = true;
-//   }
-// }
-
-// function movePlayer() {
-//   if (keyIsDown(87)) {
-//     if (grid[moveX][moveY] === "0" || grid[moveX][moveY] === 0) {
-//       playerY -= 3;
-//     }
-//   }
-//   else if (keyIsDown(83)) {
-//     if (grid[moveX][moveY] === "0" || grid[moveX][moveY] === 0) {
-//       playerY += 3;
-//     }
-//   }
-//   else if (keyIsDown(65)) {
-//     if (grid[moveX][moveY] === "0" || grid[moveX][moveY] === 0) {
-//       playerX -= 3;
-//     }
-//   }
-//   else if (keyIsDown(68)) {
-//     if (grid[moveX][moveY] === "0" || grid[moveX][moveY] === 0) {
-//       playerX += 3;
-//     }
-//   }
-//
-// }
 
  function movePlayer() {
   if (keyIsDown(87)) {
