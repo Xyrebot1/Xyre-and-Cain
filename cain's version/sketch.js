@@ -193,13 +193,19 @@ function displayGrid() {
 
 // checks to see if the player can continue moving in the same direction, currently in progress: Cain
 function isPlayerBlocked() {
-  hit = collidePointRect(playerX, playerY, cellSize / 1.5, cellSize / 1.5, x * cellSize, y * cellSize, cellSize, cellSize);
-  if (hit) {
-    playerIsBlocked = 1;
-  } else {
-    playerIsBlocked = 0;
-  }
-  return playerIsBlocked;
+  hit = collideRectRect(playerX, playerY, cellSize / 1.5, cellSize / 1.5);
+  let xCord = floor(playerX / cellSize);
+  let yCord = floor(playerY / cellSize);
+    for (let x = 0; x < cols; x++) {
+      for (let y = 0; y < rows; y++) {
+        if (playerX && playerY === floor(grid[x][y])) {
+          playerIsBlocked = 1;
+        }
+        else {
+          playerIsBlocked = 0;
+        }
+      }
+    }
 }
 
 // creates the player entity: Cain
@@ -215,6 +221,9 @@ function menuBar() {
 
 // moves the player as long as the key is pressed: Cain
  function movePlayer() {
+  let xCord = floor(playerX / cellSize);
+  let yCord = floor(playerY / cellSize);
+
   if (keyIsDown(87)) {
      playerY -= 3;
    }
