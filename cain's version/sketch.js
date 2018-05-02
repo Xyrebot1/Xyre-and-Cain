@@ -100,67 +100,80 @@ function displayGrid() {
         image(commonTile, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 2 || grid[x][y] === "2") {
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 3 || grid[x][y] === "3") {
         image(upperTile, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 4 || grid[x][y] === "4") {
         image(lowerTile, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 5 || grid[x][y] === "5") {
         image(upperTileRightOpening, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 6 || grid[x][y] === "6") {
         image(upperTileLeftOpening, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "*") {
         image(upperTileRightCorner, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "#") {
         image(upperTileLeftCorner, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 7 || grid[x][y] === "7") {
         image(lowerTileRightOpening, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === 8 || grid[x][y] === "8") {
         image(lowerTileLeftOpening, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "$") {
         image(lowerTileRightCorner, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "%") {
         image(lowerTileLeftCorner, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === "|") {
         image(rightTile, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[x][y] === ":") {
         image(leftTile, x * cellSize, y * cellSize, cellSize, cellSize);
-        fill(255, 50, 50);
+        noFill();
+        noStroke();
         rect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else {
@@ -179,6 +192,7 @@ function isPlayerBlocked() {
   } else {
     playerIsBlocked = 0;
   }
+  return playerIsBlocked;
 }
 
 function playerThing() {
