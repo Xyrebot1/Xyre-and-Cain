@@ -71,7 +71,7 @@ function setup() {
 
   for (let x = 0; x < cols; x++) {
     for (let y = 0; y < rows; y++) {
-      let tileType = mapDataThree[x][y];
+      let tileType = mapDataOne[x][y];
       grid[x][y] = tileType;
     }
   }
@@ -81,10 +81,8 @@ function draw() {
   background(0, 200, 255);
   displayGrid();
   playerThing();
-  movePlayer();
   menuBar();
   movePlayer();
-  menuBar();
 }
 
 // disables window scrolling
@@ -195,7 +193,7 @@ function displayGrid() {
 
 function playerThing() {
   fill(225, 255, 0);
-  rect(playerX, playerY, cellSize, cellSize);
+  rect(playerX, playerY, cellSize / 1.5, cellSize / 1.5);
 }
 
 function menuBar() {
@@ -226,33 +224,40 @@ function menuBar() {
 //   }
 // }
 
-function keyPressed() {
-  if (key === "w" || key === "W") {
-    playerY -= 1;
-  }
-  else if (key === "s" || key === "S") {
-    playerY += 1;
-  }
-  else if (key === "a" || key === "A") {
-    playerX -= 1;
-  }
-  else if (key === "d" || key === "D") {
-    playerX += 1;
-  }
-}
+// function keyPressed() {
+//   if (key === "w" || key === "W") {
+//     playerY -= 1;
+//   }
+//   else if (key === "s" || key === "S") {
+//     playerY += 1;
+//   }
+//   else if (key === "a" || key === "A") {
+//     playerX -= 1;
+//   }
+//   else if (key === "d" || key === "D") {
+//     playerX += 1;
+//   }
+// }
 
 function movePlayer() {
-  if (keyIsDown(87)) {
-    playerY -= 3;
+  let xCoord = floor(playerX / cellSize);
+  let yCoord = floor(playerY / cellSize);
+
+  if (grid[xCoord][yCoord] === "0" && keyIsDown(87) && playerY > 0) {
+    playerY -= 5;
+
   }
-  else if (keyIsDown(83)) {
-    playerY += 3;
+  else if (grid[xCoord][yCoord] === "0" && keyIsDown(83)) {
+    playerY += 5;
+
   }
-  else if (keyIsDown(65)) {
-    playerX -= 3;
+  else if (grid[xCoord][yCoord] === "0" && keyIsDown(65)) {
+    playerX -= 5;
+
   }
-  else if (keyIsDown(68)) {
-    playerX += 3;
+  else if (grid[xCoord][yCoord] === "0" && keyIsDown(68)) {
+    playerX += 5;
+
   }
 }
 
