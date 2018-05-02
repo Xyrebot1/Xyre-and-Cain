@@ -84,9 +84,7 @@ function draw() {
   displayGrid();
   playerThing();
   menuBar();
-  if (playerIsBlocked === 0) {
-    movePlayer();
-  }
+  movePlayer();
 }
 
 // disables window scrolling
@@ -191,14 +189,14 @@ function displayGrid() {
   }
 }
 
-// checks to see if the player can continue moving in the same direction, currently in progress: Cain
+//checks to see if the player can continue moving in the same direction, currently in progress: Cain
 function isPlayerBlocked() {
   hit = collideRectRect(playerX, playerY, cellSize / 1.5, cellSize / 1.5);
   let xCord = floor(playerX / cellSize);
   let yCord = floor(playerY / cellSize);
     for (let x = 0; x < cols; x++) {
       for (let y = 0; y < rows; y++) {
-        if (playerX && playerY === floor(grid[x][y])) {
+        if () {
           playerIsBlocked = 1;
         }
         else {
