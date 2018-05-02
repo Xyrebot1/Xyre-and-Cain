@@ -93,6 +93,8 @@ function noscroll() {
 window.addEventListener("scroll", noscroll);
 
 //shows the grid(mazes)
+// creates the grid but the grid lines themselves are not visible: Cain
+// creates entities in each cell that can be used for player collision detection: Cain
 function displayGrid() {
   for (let x = 0; x < cols; x++) {
     for (let y = 0; y < rows; y++) {
@@ -185,6 +187,7 @@ function displayGrid() {
   }
 }
 
+// checks to see if the player can continue moving in the same direction, currently in progress: Cain
 function isPlayerBlocked() {
   hit = collidePointRect(playerX, playerY, cellSize / 1.5, cellSize / 1.5, x * cellSize, y * cellSize, cellSize, cellSize);
   if (hit) {
@@ -195,6 +198,7 @@ function isPlayerBlocked() {
   return playerIsBlocked;
 }
 
+// creates the player entity: Cain
 function playerThing() {
   fill(225, 255, 0);
   rect(playerX, playerY, cellSize / 1.5, cellSize / 1.5);
@@ -205,7 +209,7 @@ function menuBar() {
   rect(0, rows * cellSize, width, 3 * cellSize);
 }
 
-
+// moves the player as long as the key is pressed: Cain
  function movePlayer() {
   if (keyIsDown(87)) {
      playerY -= 3;
