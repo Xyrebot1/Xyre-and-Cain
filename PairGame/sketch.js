@@ -1,6 +1,6 @@
-// Maze Game
-// Xyre Abelanes
-// April 16, 2018
+// Pair Game
+// Xyre Abelanes and Cain Rhode
+// May 5th, 2018
 
 let rows = 14;
 let cols = 32;
